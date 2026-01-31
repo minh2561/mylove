@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Man ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* --- CÀI ĐẶT CƠ BẢN --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Tông màu nền tối, nam tính (Xanh Navy gradient) */
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif; /* Font chữ hiện đại, dứt khoát */
+            position: relative;
+            color: #e0e0e0; /* Màu chữ sáng trên nền tối */
+        }
+
+        /* --- HIỆU ỨNG TRÁI TIM NỀN (TINH TẾ HƠN) --- */
+        .heart-bg {
+            position: absolute;
+            top: -10vh;
+            /* Màu tim nền nhạt hơn, đỡ rối mắt */
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 20px;
+            animation: fall linear forwards;
+            z-index: 0;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+
+        /* --- THẺ CHÍNH (DARK GLASSMORPHISM) --- */
+        .card {
+            /* Kính tối màu */
+            background: rgba(0, 0, 0, 0.35);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            z-index: 1;
+            transform: scale(0);
+            animation: popUp 1s ease-out forwards 0.5s;
+        }
+        @keyframes popUp { to { transform: scale(1); } }
+
+        /* --- TIÊU ĐỀ --- */
+        h1 {
+            font-family: 'Montserrat', sans-serif; /* Font tiêu đề mạnh mẽ */
+            color: #ffffff;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-transform: uppercase; /* Chữ in hoa tạo sự mạnh mẽ */
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* --- TRÁI TIM LỚN --- */
+        .main-heart {
+            font-size: 80px;
+            /* Màu đỏ đô trầm hơn */
+            color: #c0392b;
+            margin: 20px 0;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite; /* Nhịp đập chậm hơn một chút */
+            cursor: pointer;
+            transition: transform 0.3s;
+            filter: drop-shadow(0 0 15px rgba(192, 57, 43, 0.4)); /* Tạo hiệu ứng phát sáng nhẹ */
+        }
+        .main-heart:hover { transform: scale(1.15); }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.2); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.2); }
+            70% { transform: scale(1); }
+        }
+
+        /* --- VÙNG CHỨA VĂN BẢN --- */
+        .message-box {
+            font-size: 1.1rem;
+            color: #cfd8dc; /* Màu chữ xám xanh */
+            line-height: 1.7;
+            min-height: 100px;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        /* --- NÚT BẤM (BLUE GRADIENT) --- */
+        .btn {
+            padding: 14px 35px;
+            /* Gradient xanh dương mạnh mẽ */
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            border: none;
+            border-radius: 4px; /* Bo góc ít hơn, vuông vuke hơn */
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            outline: none;
+        }
+        .btn:hover {
+            background: linear-gradient(to right, #2a5298, #1e3c72); /* Đảo chiều gradient khi hover */
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 60, 114, 0.5);
+        }
+
+        .footer { margin-top: 25px; font-size: 0.75rem; color: #90a4ae; letter-spacing: 1px; }
+        
+        /* Con trỏ nhấp nháy màu sáng */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #cfd8dc;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* NÚT ĐIỀU KHIỂN NHẠC */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.5); /* Nền tối */
+            border: 2px solid #ffffff; /* Viền trắng */
+            color: #fff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s, background 0.3s;
+        }
+        .music-control:hover { transform: scale(1.1); background: rgba(0,0,0,0.8); }
+        .music-icon {
+            font-size: 22px;
+            animation: spin 3s linear infinite;
+            animation-play-state: paused;
+        }
+        .music-control.playing .music-icon { animation-play-state: running; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        #music-hint {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.75rem;
+            color: #90a4ae;
+            opacity: 0;
+            transition: opacity 1s;
+            pointer-events: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" autoplay loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-control" onclick="toggleMusic()">
+        <div class="music-icon">🎵</div>
+    </div>
+
+    <div class="card">
+        <h1>Happy Valentine's Day!</h1>
+        <div class="main-heart">❤️</div>
+        
+        <div class="message-box">
+            <span id="typing-text"></span><span class="cursor">|</span>
+        </div>
+
+        <button class="btn" onclick="celebrate()">Click để nhận quà 🎁</button>
+        <div class="footer">DESIGNED FOR YOU.</div>
+    </div>
+    
+    <div id="music-hint">Chạm vào màn hình để bật nhạc 🎶</div>
+
+    <script>
+        // 1. CẤU HÌNH LỜI CHÚC (Đã chỉnh sửa cho phù hợp với nam)
+        // Bạn hãy sửa nội dung trong ngoặc kép "" nhé.
+        const message = "Gửi người đàn ông đặc biệt của em. Cảm ơn anh đã luôn ở bên, là chỗ dựa vững chắc và khiến thế giới của em trở nên tuyệt vời hơn. Chúc anh một ngày Valentine thật vui vẻ, luôn giữ vững phong độ và hạnh phúc. Love you! 🖤";
+        
+        const speed = 60; // Tốc độ gõ chậm hơn một chút cho men-ly
+        let i = 0;
+        
+        const music = document.getElementById("bgMusic");
+        const musicBtn = document.querySelector(".music-control");
+        const musicHint = document.getElementById("music-hint");
+
+        music.volume = 0.6; // Tăng âm lượng lên một chút
+
+        // XỬ LÝ NHẠC
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+                musicBtn.classList.add("playing");
+                musicHint.style.opacity = 0;
+            } else {
+                music.pause();
+                musicBtn.classList.remove("playing");
+            }
+        }
+
+        window.onload = function() {
+            setTimeout(typeWriter, 1000);
+            var promise = music.play();
+            if (promise !== undefined) {
+                promise.then(_ => {
+                    musicBtn.classList.add("playing");
+                }).catch(error => {
+                    musicHint.style.opacity = 1;
+                });
+            }
+        };
+
+        document.body.addEventListener('click', function() {
+            if (music.paused) {
+                music.play();
+                musicBtn.classList.add("playing");
+                musicHint.style.opacity = 0;
+            }
+        }, { once: true });
+
+        // HIỆU ỨNG GÕ CHỮ
+        function typeWriter() {
+            if (i < message.length) {
+                document.getElementById("typing-text").innerHTML += message.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            } else {
+                document.querySelector(".cursor").style.display = 'none';
+            }
+        }
+
+        // HIỆU ỨNG MƯA TIM NỀN
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-bg');
+            heart.innerHTML = '❤️'; // Có thể đổi thành icon khác nếu thích, ví dụ ngôi sao '⭐'
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 15 + 8 + 'px'; // Kích thước nhỏ hơn
+            heart.style.animationDuration = Math.random() * 3 + 4 + 's'; // Rơi chậm hơn
+            heart.style.opacity = Math.random() * 0.5 + 0.2; // Độ mờ ngẫu nhiên
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 7000);
+        }
+        setInterval(createHeart, 400); // Mật độ thưa hơn
+
+        // XỬ LÝ NÚT BẤM
+        function celebrate() {
+            if (music.paused) {
+                music.play();
+                musicBtn.classList.add("playing");
+            }
+            // Tăng tốc mưa tim một chút khi bấm
+            setInterval(createHeart, 150);
+            
+            const btn = document.querySelector('.btn');
+            btn.innerHTML = "Yêu anh nhiều! 🖤";
+            // Đổi màu nút khi bấm thành màu đỏ đô
+            btn.style.background = "#c0392b";
+            
+            // Hiệu ứng nháy đèn nền chuyển sang tông ấm
+            let count = 0;
+            const flash = setInterval(() => {
+                document.body.style.background = count % 2 === 0 ? '#2c3e50' : '#c0392b';
+                count++;
+                if(count > 8) {
+                    clearInterval(flash);
+                    // Trả về nền cũ
+                    document.body.style.background = 'linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)';
+                }
+            }, 150);
+            
+            // Thông báo rút gọn lại
+            setTimeout(() => {
+                 alert("Chúc mừng Valentine! Món quà lớn nhất chính là em đây! 😉");
+            }, 500);
+           
+        }
+    </script>
+</body>
+</html>
